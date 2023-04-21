@@ -34,6 +34,7 @@ public class FamilyTree
             // Add childNode to this node's children list. Also
             // set childNode's parent to this node.
         	this.children.add(childNode);
+        	childNode.parent = this; 
         }
         
         
@@ -42,7 +43,7 @@ public class FamilyTree
         TreeNode getNodeWithName(String targetName)
         {
             // Does this node have the target name?
-            if (this.name == targetName)
+            if (this.name.equals(targetName))
                 return this;
                     
             // No, recurse. Check all children of this node.
@@ -152,7 +153,7 @@ public class FamilyTree
 		else {
 			parentNode = root.getNodeWithName(parent);
 			if(parentNode == null) {
-				throw new TreeException("Parent node not found.");
+				throw new TreeException("invalid parent node." + parent);
 			}
 		}
 		
